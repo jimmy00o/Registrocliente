@@ -88,8 +88,11 @@ const styles = StyleSheet.create({
   },
   botonAgregar: {
     backgroundColor: '#E8F5E9',
-    padding: 8,
-    borderRadius: 40,
+    padding: 12,
+    borderWidth:5,
+    borderColor:'green',
+    borderRadius:10,
+    
   },
   mensaje: {
     fontSize: 16,
