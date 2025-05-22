@@ -3,6 +3,15 @@ import { useState } from 'react';
 import Entypo from '@expo/vector-icons/Entypo';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
+import { collection,
+  getFirestore,
+  query, doc,
+  setDoc, getDocs} from 'firebase/firestore';
+  import appFirebase from '../Firebase';
+
+  const db=getFirestore(appFirebase)
+
+
 export default function ListarClientes({ navigation }) {
   const [clientes, setClientes] = useState([]);
 
@@ -24,8 +33,8 @@ export default function ListarClientes({ navigation }) {
     );
   };
 
-  const agregarNuevoCliente = (nuevoCliente) => {
-    setClientes([nuevoCliente, ...clientes]);
+  const agregarNuevoCliente = async(nuevo) => {
+    await setDoc(doc(db, "clientes", nuevo.cedula), nuevo)
   };
 
   return (
